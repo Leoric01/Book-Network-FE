@@ -1,17 +1,24 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
-
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  }
   set token(token: string) {
-    localStorage.setItem('token', token);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('token', token);
+    }
   }
 
-  get token() {
-    return localStorage.getItem('token') as string;
+  get token(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('token');
+    }
+    return null;
   }
 
   isTokenValid() {
@@ -23,13 +30,15 @@ export class TokenService {
     const jwtHelper = new JwtHelperService();
     const isTokenExpired = jwtHelper.isTokenExpired(token);
     if (isTokenExpired) {
-      localStorage.clear();
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.clear();
+      }
       return false;
     }
     return true;
   }
 
-  isTokenNotValid() {
+  isTokenNotValid(): boolean {
     return !this.isTokenValid();
   }
 
@@ -39,7 +48,7 @@ export class TokenService {
       const jwtHelper = new JwtHelperService();
       const decodedToken = jwtHelper.decodeToken(token);
       console.log(decodedToken.authorities);
-      return decodedToken.authorities;
+      return decodedToken.authorities || [];
     }
     return [];
   }

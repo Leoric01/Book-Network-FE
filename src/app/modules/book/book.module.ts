@@ -6,6 +6,7 @@ import {MainComponent} from './pages/main/main.component';
 import {FormsModule} from '@angular/forms';
 import {MenuComponent} from './components/menu/menu.component';
 import {BookCardComponent} from './components/book-card/book-card.component';
+import {BookListComponent} from './pages/book-list/book-list.component';
 // import { BookListComponent } from './pages/book-list/book-list.component';
 // import { MyBooksComponent } from './pages/my-books/my-books.component';
 // import { ManageBookComponent } from './pages/manage-book/manage-book.component';
@@ -20,6 +21,7 @@ import {BookCardComponent} from './components/book-card/book-card.component';
     MainComponent,
     MenuComponent,
     BookCardComponent,
+    BookListComponent,
     // BookListComponent,
     // MyBooksComponent,
     // ManageBookComponent,
