@@ -7,7 +7,7 @@
   <ng-template #activationError>
     <div class="activation-error">
       <h2>Activation Failed!</h2>
-      <p>{{ message }}</p>
+      <p *ngFor="let msg of errorMsg">{{ msg }}</p>
       <button class="btn btn-primary" (click)="submitted = false">Try again</button>
     </div>
   </ng-template>
