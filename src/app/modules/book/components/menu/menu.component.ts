@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
 import {Router} from '@angular/router';
+import {TokenService} from '../../../../services/token/token.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,10 +9,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  nickname: string | null = null;
 
   constructor(
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: object
+    @Inject(PLATFORM_ID) private platformId: object,
+    private tokenService: TokenService
   ) {
   }
 
@@ -28,6 +31,7 @@ export class MenuComponent implements OnInit {
         });
       });
     }
+    this.nickname = this.tokenService.username;
   }
 
   async logout() {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
@@ -42,5 +42,15 @@ export class TokenService {
       return decodedToken.authorities;
     }
     return [];
+  }
+
+  get username(): string | null {
+    const token = this.token;
+    if (token) {
+      const jwtHelper = new JwtHelperService();
+      const decodedToken = jwtHelper.decodeToken(token);
+      return decodedToken.fullName || null;
+    }
+    return null;
   }
 }
