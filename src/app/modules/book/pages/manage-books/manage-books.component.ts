@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookRequest} from '../../../../services/models/book-request';
 import {BookService} from '../../../../services/services/book.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './manage-books.component.html',
   styleUrl: './manage-books.component.scss'
 })
-export class ManageBooksComponent {
+export class ManageBooksComponent implements OnInit {
 
   errorMsg: Array<string> = [];
   bookRequest: BookRequest = {

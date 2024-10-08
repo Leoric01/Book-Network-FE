@@ -35,6 +35,7 @@ export class MenuComponent implements OnInit {
   }
 
   async logout() {
-    this.router.navigate(['login']);
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 }
