@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {BookRequest} from '../../../../services/models/book-request';
 import {BookService} from '../../../../services/services/book.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './manage-books.component.html',
   styleUrl: './manage-books.component.scss'
 })
-export class ManageBooksComponent implements OnInit {
+export class ManageBooksComponent {
 
   errorMsg: Array<string> = [];
   bookRequest: BookRequest = {
@@ -27,25 +27,25 @@ export class ManageBooksComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-    const bookId = this.activatedRoute.snapshot.params['bookId'];
-    if (bookId) {
-      this.bookService.findBookById({
-        'book-id': bookId
-      }).subscribe({
-        next: (book) => {
-          this.bookRequest = {
-            id: book.id,
-            title: book.title as string,
-            authorName: book.authorName as string,
-            isbn: book.isbn as string,
-            synopsis: book.synopsis as string,
-            shareable: book.shareable
-          }
-        }
-      });
-    }
-  }
+  // ngOnInit(): void {
+  //   const bookId = this.activatedRoute.snapshot.params['bookId'];
+  //   if (bookId) {
+  //     this.bookService.findBookById({
+  //       'book-id': bookId
+  //     }).subscribe({
+  //       next: (book) => {
+  //         this.bookRequest = {
+  //           id: book.id,
+  //           title: book.title as string,
+  //           authorName: book.authorName as string,
+  //           isbn: book.isbn as string,
+  //           synopsis: book.synopsis as string,
+  //           shareable: book.shareable
+  //         }
+  //       }
+  //     });
+  //   }
+  // }
 
   saveBook() {
     this.bookService.saveBook({
@@ -73,9 +73,7 @@ export class ManageBooksComponent implements OnInit {
   onFileSelected(event: any) {
     this.selectedBookCover = event.target.files[0];
     console.log(this.selectedBookCover);
-
     if (this.selectedBookCover) {
-
       const reader = new FileReader();
       reader.onload = () => {
         this.selectedPicture = reader.result as string;

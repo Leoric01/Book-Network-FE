@@ -37,13 +37,13 @@
         <div class="col-12">
           <label for="synopsis" class="form-label">Synopsis</label>
           <textarea [(ngModel)]="bookRequest.synopsis" rows="4" class="form-control" id="synopsis" name="synopsis"
-                    placeholder="1234 Main St"></textarea>
+                    placeholder="Book's short description"></textarea>
         </div>
         <div class="col-12">
           <div class="form-check">
-            <input [(ngModel)]="bookRequest.shareable" class="form-check-input" type="checkbox" id="gridCheck"
+            <input [(ngModel)]="bookRequest.shareable" class="form-check-input" type="checkbox" id="shareme"
                    name="shareable">
-            <label class="form-check-label" for="gridCheck">
+            <label class="form-check-label" for="shareme">
               Share me
             </label>
           </div>
@@ -52,7 +52,7 @@
           <button (click)="saveBook()" type="submit" class="btn btn-outline-primary">
             <i class="fas fa-save"></i>&nbsp;Save
           </button>
-          <a routerLink="/books/my-books" type="submit" class="btn btn-link btn text-danger">
+          <a routerLink="/books/my-books" type="submit" class="btn btn-link text-danger">
             <i class="fas fa-times"></i>&nbsp;Cancel
           </a>
         </div>
