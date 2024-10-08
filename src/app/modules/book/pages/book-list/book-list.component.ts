@@ -35,14 +35,14 @@ export class BookListComponent implements OnInit {
       .subscribe({
         next: (books) => {
           this.bookResponse = books;
-          // this.pages = Array(this.bookResponse.totalPages)
-          //   .fill(0)
-          //   .map((x, i) => i);
+          this.pages = Array(this.bookResponse.totalPages)
+            .fill(0)
+            .map((x, i) => i);
         }
       });
   }
 
-  gotToPage(page: number) {
+  goToPage(page: number) {
     this.page = page;
     this.findAllBooks();
   }
@@ -57,19 +57,19 @@ export class BookListComponent implements OnInit {
     this.findAllBooks();
   }
 
-  // goToLastPage() {
-  //   this.page = this.bookResponse.totalPages as number - 1;
-  //   this.findAllBooks();
-  // }
+  goToLastPage() {
+    this.page = this.bookResponse.totalPages as number - 1;
+    this.findAllBooks();
+  }
 
   goToNextPage() {
     this.page++;
     this.findAllBooks();
   }
 
-  // get isLastPage() {
-  //   return this.page === this.bookResponse.totalPages as number - 1;
-  // }
+  get isLastPage() {
+    return this.page === this.bookResponse.totalPages as number - 1;
+  }
 
   borrowBook(book: BookResponse) {
     this.message = '';

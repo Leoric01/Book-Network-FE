@@ -770,7 +770,7 @@
             "type": "integer",
             "format": "int64"
           },
-          "pages": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
           },
@@ -805,8 +805,7 @@
             "type": "string"
           },
           "cover": {
-            "type": "string",
-            "format": "byte"
+            "type": "string"
           },
           "rate": {
             "type": "number",
@@ -817,6 +816,10 @@
           },
           "shareable": {
             "type": "boolean"
+          },
+          "coverAsBytes": {
+            "type": "string",
+            "format": "byte"
           }
         }
       },
@@ -841,7 +844,7 @@
             "type": "integer",
             "format": "int64"
           },
-          "pages": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
           },
@@ -902,7 +905,7 @@
             "type": "integer",
             "format": "int64"
           },
-          "pages": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
           },
