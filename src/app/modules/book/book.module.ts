@@ -8,7 +8,8 @@ import {MenuComponent} from './components/menu/menu.component';
 import {BookCardComponent} from './components/book-card/book-card.component';
 import {BookListComponent} from './pages/book-list/book-list.component';
 import {RatingComponent} from './components/rating/rating.component';
-// import { MyBooksComponent } from './pages/my-books/my-books.component';
+import {MyBooksComponent} from './pages/my-books/my-books.component';
+import {ManageBooksComponent} from './pages/manage-books/manage-books.component';
 // import { ManageBookComponent } from './pages/manage-book/manage-book.component';
 // import { BorrowedBookListComponent } from './pages/borrowed-book-list/borrowed-book-list.component';
 // import { ReturnedBooksComponent } from './pages/returned-books/returned-books.component';
@@ -22,7 +23,8 @@ import {RatingComponent} from './components/rating/rating.component';
     BookCardComponent,
     BookListComponent,
     RatingComponent,
-    // MyBooksComponent,
+    MyBooksComponent,
+    ManageBooksComponent,
     // ManageBookComponent,
     // BorrowedBookListComponent,
     // ReturnedBooksComponent,
