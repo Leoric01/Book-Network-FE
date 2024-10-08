@@ -27,25 +27,27 @@ export class ManageBooksComponent {
   ) {
   }
 
-  // ngOnInit(): void {
-  //   const bookId = this.activatedRoute.snapshot.params['bookId'];
-  //   if (bookId) {
-  //     this.bookService.findBookById({
-  //       'book-id': bookId
-  //     }).subscribe({
-  //       next: (book) => {
-  //         this.bookRequest = {
-  //           id: book.id,
-  //           title: book.title as string,
-  //           authorName: book.authorName as string,
-  //           isbn: book.isbn as string,
-  //           synopsis: book.synopsis as string,
-  //           shareable: book.shareable
-  //         }
-  //       }
-  //     });
-  //   }
-  // }
+  ngOnInit(): void {
+    const bookId = this.activatedRoute.snapshot.params['bookId'];
+    if (bookId) {
+      this.bookService.findBookById({
+        'book-id': bookId
+      }).subscribe({
+        next: (book) => {
+          this.bookRequest = {
+            title: book.title as string,
+            authorName: book.authorName as string,
+            isbn: book.isbn as string,
+            synopsis: book.synopsis as string,
+            shareable: book.shareable
+          }
+          if (book.cover) {
+            this.selectedPicture = 'data:image/jpg;base64,' + book.cover;
+          }
+        }
+      });
+    }
+  }
 
   saveBook() {
     this.bookService.saveBook({
